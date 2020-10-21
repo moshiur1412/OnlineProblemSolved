@@ -1,0 +1,53 @@
+<html>
+<body>
+	<script>
+		var str = "Please locate where 'locate' occures!";
+		var pos = str.indexOf("locate");
+		var last = str.lastIndexOf("locate");
+		var backwards = str.lastIndexOf("locate", 15); // the search starts at position 15
+
+		var searchValue = str.search("locate");
+
+		// console.log(pos); // 7
+		// console.log(last); // 21
+		// console.log(backwards); // 7
+
+		// console.log(searchValue); // 7
+
+		// serach() method not taken start postion
+		// indexOf() method not powerful search value
+
+
+		// Extracting String Parts
+		var str = "Apple, Banana, Kiwi";
+		var start = 7, end = 13, length = 6;
+
+		// console.log(str.slice(start, end));  // Banana
+		// console.log(str.substring(start, end)); // Banana
+		// console.log(str.substr(start, length)); // Banana
+		// console.log(str.substr(-4)); // Kiwi
+		// console.log(str.substring(-4)); // not working parsing
+		// console.log(str.replace("Apple", "Test")); // Test, Banana, Kiwi
+		// console.log(str.toUpperCase()); //  APPLE, BANANA, KIWI
+		// console.log(str.toLowerCase()); // apple, banana, kiwi
+
+		// console.log(str.concat(", "+"Test")); // Apple, Banana, Kiwi, Test
+
+		var whiteSpace = "            whiteSpace removed      ";
+		console.log(whiteSpace); //             whiteSpace removed 
+		console.log(whiteSpace.trim()); // whiteSpace removed
+		var test = whiteSpace.trim();
+		console.log(whiteSpace.length); // 36
+		console.log(test.length); // 18
+
+		console.log(str.charAt(0)); // A
+		console.log(str.charCodeAt(0)) // 72
+
+		console.log(str.split(","));
+
+
+
+
+	</script>
+</body>
+</html>

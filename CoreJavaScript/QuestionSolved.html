@@ -1,0 +1,50 @@
+<html>
+
+<body>
+	<div id="app"></div>
+	<script>
+		// # Negative Infinity
+		var ni1 = 100;
+		// undefined
+		console.log(ni1.negative_infinity);
+
+		var ni2 = -1/0;
+		// -Infinity
+		console.log(ni2); 
+		// undefined
+		console.log(ni2.negatvie_infinity); 
+
+
+		console.log(Infinity);  // infinity
+		console.log(Number.POSITIVE_INFINITY); // infinity
+		console.log(Math.pow(2,1024)); // infinity
+		console.log(1.8e+380); // infinity
+		console.log(1/0); // infinity
+
+		// https://medium.com/swlh/what-is-infinity-in-javascript-%EF%B8%8F-1faf82f100bc
+
+
+		// #  Is it possible to break JavaScript Code into several lines?
+		document.write("This is \a program"); // This is a program
+
+
+		// # Adding new Element
+		var addnewP = document.createElement("p");
+		var textNode = document.createTextNode("This is the text for textNode");
+		addnewP.appendChild(textNode);
+		document.getElementById('app').appendChild(addnewP);
+
+
+		// # JavaScript Pop() method
+		var cloths = ['Shirt', 'Pant', 't-Shirt'];
+		cloths.pop();
+		// (2) ["Shirt", "Pant"]
+		console.log(cloths);
+
+		cloths.unshift("M"); // added from beginer
+		// (3) ["M", "Shirt", "Pant"]
+		console.log(cloths);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+<body>
+	<p id="demo">
+
+	</p>
+	<script>
+		var cars = ["A", "B", "C"];
+		// console.log(cars);
+
+		var arr = new Array("D","E","F");
+
+		// Changed array 
+		arr[0] = "Testing";
+
+		// console.log(arr); 
+		// console.log(arr.length); // lenght property reutn the number of elelment
+		// console.log(arr.sort()); // sort tarry 
+
+		var result; 
+
+		for(i =0; i < arr.length; i++){
+			result = arr[i];
+			// console.log(result);
+		}
+
+		// console.log(result
+
+		var fruits, text;
+		fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+
+		text = "<ul>";
+		fruits.forEach(myFunction);
+		text += "</ul>";
+
+		document.getElementById('demo').innerHTML= text;
+
+		function myFunction(value){
+			text += "<li>" + value + "</li>";
+		}
+
+
+
+		var testValue = "";
+		
+			// adding element
+			arr.push("push new");
+
+			arr.forEach(testFunc)
+
+			function testFunc(value){
+				testValue += value + "\n";
+			}
+
+		// console.log(testValue);
+		
+
+
+		console.log(testValue);
+
+		console.log(typeof testValue); // string
+		console.log(Array.isArray(arr)); // true
+		console.log(arr instanceof Array ); // true
+	</script>
+</body>
+</html>

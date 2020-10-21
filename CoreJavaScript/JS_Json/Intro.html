@@ -1,0 +1,38 @@
+<html>
+<body>
+	<pre>
+		JSON: JavaScript Object Notation
+		json is a syntax for storing and exchanging data.
+		joson is text, written with JavaScript object notation.
+	</pre>
+	<script>
+		var myObj = { 
+			name: "John",
+			age: 31,
+			city: "new York"
+		};
+
+		// {name: "John", age: 31, city: "new York"}
+		console.log(myObj);
+		
+		var myJSON = JSON.stringify(myObj);
+		// {"name":"John","age":31,"city":"new York"}
+		console.log(myJSON);
+
+
+		var myObj2, myJson2, text, obj;
+
+		// storing data:
+		myObj2 = { name: "Kyle xy", age: 37, city: "vancouver BC"};
+		myJson2 = JSON.stringify(myObj2);
+		localStorage.setItem("testJSON", myJson2);
+
+		// Retrieving data
+		text = localStorage.getItem("testJSON");
+		obj = JSON.parse(text);
+		// Kyle xy
+		console.log(obj.name); 
+
+	</script>
+</body>
+</html>

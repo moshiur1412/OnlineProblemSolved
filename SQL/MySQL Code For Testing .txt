@@ -1,0 +1,74 @@
+# Create a database
+CREATE DATABASE las_db;
+
+# Select Database
+USE las_db;
+
+# Create a Users Table
+CREATE TABLE Users(
+    id INT(20) PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    address CHAR(25)
+);
+
+# Create a Roles Table 
+CREATE TABLE Roles(
+    id INT(20) PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(30) NOT NULL,
+    descrs VARCHAR(255),
+    user_id INT(20) NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES Users(id) ON DELETE CASCADE
+);
+
+# Create a leaves Table
+CREATE TABLE Leaves(
+    id INT(20) PRIMARY KEY AUTO_INCREMENT,
+    status INT(1) default '4' COMMENT '4 for super admin then 3/2/1 for next; approved (0) & Reject(-1)',
+    type INT(1) NOT NULL COMMENT '1 FOR Casual Leave 2 FOR Others Leave',
+    message TEXT,
+    user_id INT(20) NOT NULL,
+    approval_id INT(20) COMMENT 'last approved by id for tracking who Rejected',
+    FOREIGN KEY(user_id) REFERENCES Users(id) ON DELETE CASCADE,
+    FOREIGN KEY(approval_id) REFERENCES Roles(id) ON DELETE CASCADE
+);
+
+
+# Insert Users Values
+INSERT INTO Users
+VALUES(
+    "1",
+    "User 01",
+    "u1@gmail.com",
+    "Dhaka 01"
+),(
+    "2",
+    "User 02",
+    "u2@gmail.com",
+    "Dhaka 02"
+),(
+    "3",
+    "User 03",
+    "u3@gmail.com",
+    "Dhaka 03"
+),(
+    "4",
+    "User 04",
+    "u4@gmail.com",
+    "Dhaka 04"
+),(
+    "5",
+    "User 05",
+    "u5@gmail.com",
+    "Dhaka 05"
+);
+
+
+# Insert Roles Value
+INSERT INTO Roles
+VALUES("1", "Super Admin", "Power 01", "1"),("2", "Admin", "Power 02", "2"),("3", "Modarator", "Power 03", "3"),("4", "Assistent", "Power 04", "4"),("5", "Normal User", "Power 00", "5");
+
+# Insert Leaves Value
+INSERT INTO Leaves
+VALUES( "1", "4",1,"I wanna a leave for 1 day",5, NULL);
+

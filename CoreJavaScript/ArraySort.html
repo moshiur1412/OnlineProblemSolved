@@ -1,0 +1,45 @@
+<html>
+<body>
+	<script>
+		var arr = ['A', 'B', 'E', 'C'];
+		console.log(arr.sort()); // (4) ["A", "B", "C", "E"]
+		console.log(arr.reverse());  // (4) ["E", "C", "B", "A"]
+		
+		var arr2 = [100, 2,3,4,5];
+
+		// Output-> (4) [2, 3, 4, 5]
+		console.log(arr2.sort(
+			function(a,b){
+				return a - b 
+			}
+			)); 
+
+		//output-> (5) [100, 5, 4, 3, 2] 
+		console.log(arr2.sort(
+			function(a,b){
+				return b - a 
+			}
+			)); 
+
+		console.log(Math.min.apply(arr2)); // infinity
+		console.log(Math.min.apply(null, arr2)); // 2
+		console.log(Math.max(arr2)); // NaN
+		console.log(Math.max.apply(null, arr2)); // 100;
+
+
+		function myArrayMin(arr){
+			var len = arr.length;
+			var min = Infinity;
+			while(len --){
+				if(arr[len] < min){
+					min = arr[len]
+				}
+			}
+			return min;
+		}
+
+		console.log(myArrayMin(arr2)); // 2
+
+	</script>
+</body>
+</html>

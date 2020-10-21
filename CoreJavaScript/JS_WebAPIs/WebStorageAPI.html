@@ -1,0 +1,28 @@
+<html>
+<body>
+	<script>
+		localStorage.setItem("name", "John Doe"); // key, value
+		var x = localStorage.getItem("name");
+		sessionStorage.setItem("sName", "Session Storage")
+		var y = sessionStorage.getItem("sName");
+		// John Doe
+		console.log(x);
+		// Session Storage
+		console.log(y);
+		// undefined
+		console.log(x.key);
+		// 8
+		console.log(x.length);
+
+		localStorage.removeItem("name");
+
+		localStorage.clear();
+		// null
+		console.log(localStorage.getItem("name"));
+
+
+
+
+	</script>
+</body>
+</html>

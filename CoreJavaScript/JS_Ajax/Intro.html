@@ -1,0 +1,85 @@
+<html>
+<body>
+	<h3> AJAX stands for Asynchronous Javascript and XML </h3>
+	<h5> Read data from a web server - after the page has loaded</h5>
+	<h5> Update a web page without reloading the page</h5>
+	<h5> Send data to a web server in the background </h5>
+
+	
+	<div id="demo">
+		<h5> The XMLHttpRequest Object</h5>
+		<button type="button" onclick="loadDoc()">Change Content</button>
+	</div>
+
+	<div id="demo2">
+		<h2>The CMLHttpRequest Object</h2>
+		<button type="button" onclick="loadDoc2('ajax_info.txt', myFunction)">Try it!</button>
+	</div>
+
+	<script>
+		function loadDoc(){
+			var xhttp = new XMLHttpRequest(); // XMLHttpRequest Object 
+			console.log(xhttp);
+			xhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					document.getElementById('demo').innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("GET", "ajax_info.txt", true); // true = async & flas = sync
+			xhttp.send();
+		}
+
+		// XMLHttpRequest object methods
+		// 1. new XMLHttpRequest()						=>  create new object
+		// 2. abort()              						=>  cancels the current request
+		// 3. getAllResponseHeaders() 					=>  Return header information
+		// 4. getResponseHeader()        				=>  returns specific header information
+		// 5. open(method, ulr, async, user, psw)		=> 	specifices the request
+		// 6. send() 									=> 	used GET:: sends the request to the server.
+		// 7. send(string) 								=> 	used POST:: sends the request to the server
+		// 8. setRequestHeader() 						=> 	adds a label/value pair to the header to be sent
+
+
+		// XHttpRequest Object Properties
+		// 1. onreadystatechange 						=> called when readystate property change
+		// 2. readyState 								=>	Hold status of the XMLHttpRequest
+		// 													0. request not initialized
+		// 													1. server connection established
+		// 													2. request received
+		// 													3. processing request
+		// 													4. request finished and response ready 
+		// 3. responseText								=> Returns the response data as a String
+		// 4. responseXML								=> Returns the response data as XML data
+		// 5. status 									=> Returns number of status
+		// 													200: OK 
+		// 													403: Forbidden
+		// 													404: Not found
+		// 6. statusText								=> return ok/not found just text
+
+
+
+		function myFunction(xhttp){
+			console.log(xhttp);
+			// document.getElementById('demo2').innerHTML = xhttp.responseText;
+
+			// accept-ranges: bytes connection: Keep-Alive content-encoding: gzip content-length: 144 content-type: text/plain date: Thu, 24 Sep 2020 07:53:54 GMT etag: "a5-5b008b39d3b15-gzip" keep-alive: timeout=5, max=99 last-modified: Thu, 24 Sep 2020 05:45:03 GMT server: Apache/2.4.41 (Ubuntu) vary: Accept-Encoding
+			document.getElementById('demo2').innerHTML = xhttp.getAllResponseHeaders();
+			
+
+		}
+
+		function loadDoc2(url, cFunction){
+			var xhttp;
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					cFunction(this);
+				}
+			};
+			xhttp.open("GET", url, true);
+			xhttp.send();
+		}
+
+	</script>
+</body>
+</html>

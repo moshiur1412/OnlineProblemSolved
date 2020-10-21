@@ -1,0 +1,38 @@
+<html>
+<body>
+	<h1 onclick="this.innerHTML='Oooops!'"> Click on this text! </h1>
+
+	<h1 onclick="changeText(this)"> Click on this text2!</h1>
+	<p>
+
+		OnChanged Events: <input type="text" id="fname" onchange="upperCase()">
+	</p>
+
+	<div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color: #D94A38; width: 120px;height:20px; padding:40px;"></div>
+
+	<script>
+		function changeText(id){
+			// Ooops2 !
+			id.innerHTML = "Ooops2 !";
+			// <h1 onclick="changeText(this)"> Click on this text2!</h1>
+			console.log(id);
+		}
+
+
+		function upperCase(){
+			var x = document.getElementById('fname');
+			x.value = x.value.toUpperCase();
+		}
+
+		function mOver(obj){
+			obj.innerHTML = "Thank you";
+			console.log(obj);
+		}
+
+		function mOut(obj){
+			obj.innerHTML = "Mouse Over me";
+			console.log(obj);
+		}
+	</script>
+</body>
+</html>

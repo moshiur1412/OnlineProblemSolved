@@ -1,0 +1,1 @@
+n=int(input()) l=[] l=list(map(int,input().split())) if n==len(l): for i in l: l=[j for j in range(2,i) if 0 not in [j%k for k in range(2,j)]] p=2**len(l) q=len([j for j in range(2,p) if 0 not in [j%k for k in range(2,j)]]) print(q+1,end=" ") l.clear()

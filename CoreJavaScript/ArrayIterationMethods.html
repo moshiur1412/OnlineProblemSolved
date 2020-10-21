@@ -1,0 +1,52 @@
+<html>
+<body>
+	<script>
+		var txt = "";
+
+		var num = [45,3, 5, 5,6];
+		num.forEach(myFunction);
+
+		function myFunction(value, index, array){
+			txt = txt + value + "\n";
+
+		}
+
+		console.log(txt);
+		// 45
+		// 3
+		// 5
+		// 5
+		// 6
+
+		var num2 = num.map(funTest2);
+		function funTest2(value, index, array){
+			return value * 2;
+		}
+		console.log(num2); // (5) [90, 6, 10, 10, 12]
+		
+
+		var num3 = num.filter(funTest3);
+		function funTest3(value, index, array){
+			return value > 18;
+		}
+		console.log(num3); // [45]
+
+		
+		var num4 = num.reduce(funTest4);
+		function funTest4(total, value){
+			return total + value;
+		}
+		console.log(num4); // 64
+
+		
+		var num5 = num.reduceRight(funTest5);
+		function funTest5(total, value, index, array){
+			return total + value;
+		}
+		console.log(num5); // 64
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<body>
+	<p id="demo" class="intro"></p>
+	<p id="test" class="intro"></p>
+	<script>
+		// document.getElementById('demo').innerHTML = '786, Hello !';
+		// getElementById = is method
+		// innerHTML = property
+
+
+
+		var x = document.getElementById('demo');
+		// <p id="demo" class="intro"></p>
+		console.log(x);
+		
+		var y = document.getElementsByTagName('p');
+		// <p id="test" class="intro"></p>
+		console.log(y[1]);
+		// HTMLCollection(2) [p#demo.intro, p#test.intro, demo: p#demo.intro, test: p#test.intro]
+		console.log(y);
+
+		var z = document.getElementsByClassName('intro');
+		// HTMLCollection(2) [p#demo.intro, p#test.intro, demo: p#demo.intro, test: p#test.intro]
+		console.log(z);
+
+		var a = document.querySelectorAll("p.intro");
+		// NodeList(2) [p#demo.intro, p#test.intro]
+		console.log(a);
+
+		Tue Sep 22 2020 15:34:36 GMT+0600 (Bangladesh Standard Time)
+		document.write(Date());
+
+
+	</script>
+</body>
+</html>

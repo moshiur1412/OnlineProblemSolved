@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript Output</title>
+</head>
+<body>
+	<pre>
+		# Writing into the html element using innerHTML
+		# Writing into the html element using document.write()
+		# Writing into an alert box, using window.alert()
+		# Writing into the browser console, using console.log()
+	</pre>
+	
+
+	<p id="demo"></p>
+
+	<script>
+		document.getElementById('demo').innerHTML = 5+9;
+		document.write(5+5);
+	</script>
+
+	<p> This is the second paragraph </p>
+	<button onClick="document.write(9+9)"> Try document.write() method</button>
+
+	# window object is the global object that means that variables, properties and methods by default belog to the window object. This also mean that specifying the window keyword is optional.
+
+	<script>
+		window.alert(6*6);
+		console.log(5+5);
+
+	</script>
+
+	<p> This is the third paragraph </p>
+
+	<button onclick="window.print()"> Print this page </button>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<pre>
+Ajax
+Ajax is not a programming language 
+ajax is a technique for accessing web servers from a web page.
+ajax stands for asynchronous Javascript and XML.
+</pre>

@@ -1,0 +1,22 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<p id="id01">786, Hello JS </p>
+	<p class="intro" id="id02"></p>
+	<script>
+		$(document).ready(function(){
+			var myElement = $("#id01");
+			// k.fn.init [p#id01]
+			console.log(myElement);
+		});
+
+		var into = $("p.itro");
+		$("#id02").text("Text from console");
+		// k.fn.init [prevObject: k.fn.init(1)
+		console.log(into);
+
+	</script>
+</body>
+</html>

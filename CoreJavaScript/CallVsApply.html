@@ -1,0 +1,39 @@
+<html>
+<body>
+	<h1>The Call() method takes arguemnts separately</h1>
+	<h1>The Apply() method takes argument as an array</h1>
+
+	<script>
+		var person = {
+			fullName: function(city, country){
+				return this.firstName + " " + this.lastName + ", " + city + "," + country;
+			}
+		}
+
+		var person1 = {
+			firstName: "John",
+			lastName: "Doe"
+		}
+
+		var result = person.fullName.apply(person1, ["Oslo", "Norway"]);
+		// John Doe, Oslo,Norway
+		console.log(result);
+
+		var result1 = person.fullName.call(person1, "vancouver", "canada");
+		// John Doe, vancouver,canada
+		console.log(result1);
+
+		var test1 = Math.max(1,2,3);
+		// 3
+		console.log(test1);
+
+		var test2 = Math.max.apply(null, [1,2,3]);
+		// 3
+		console.log(test2);
+		// 3
+		console.log(Math.max.apply(Math, [1,2,3]));
+
+
+	</script>
+</body>
+</html>

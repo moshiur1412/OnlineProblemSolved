@@ -1,0 +1,25 @@
+<html>
+<body>
+	<script>
+		var d = new Date("2015-03-25");
+		// Wed Mar 25 2015 06:00:00 GMT+0600 (Bangladesh Standard Time)
+		console.log(d); // complete date
+
+		// Sun Mar 01 2015 06:00:00 GMT+0600 (Bangladesh Standard Time)
+		console.log(new Date("2015-03")); // ISO Dates 
+
+		// Thu Jan 01 2015 06:00:00 GMT+0600 (Bangladesh Standard Time)
+		console.log(new Date("2015")); // Only Year
+
+		// Wed Mar 25 2015 00:00:00 GMT+0600 (Bangladesh Standard Time)
+		console.log(new Date("03/25/2015")); // short date
+
+		// Wed Mar 25 2015 00:00:00 GMT+0600 (Bangladesh Standard Time)
+		console.log(new Date("Mar 25 2015")); 
+		
+		// 1332266400000 (Milliseconds)
+		console.log(Date.parse("March 21, 2012"));
+
+	</script>
+</body>
+</html>

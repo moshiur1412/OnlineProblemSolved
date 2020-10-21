@@ -1,0 +1,58 @@
+<html>
+<body>
+
+	<button id="myBtn">
+		Try addEventListener method
+	</button>
+	<p id="demo">
+		element.addEventListener(event,function,useCapture);
+	</p>
+
+	<button id="btn2">
+		click, function()
+	</button>
+
+	<button id="btn3">
+		clicked, mouseover & mouseout
+	</button>
+
+	<p id="output" style="background-color: green;">
+		
+	</p>
+	<script>
+		document.getElementById('myBtn').addEventListener("click", displayDate);
+		function displayDate(){
+			document.getElementById('demo').innerHTML = Date();
+		}
+
+		document.getElementById('btn2').addEventListener('click', function(){
+			alert('used function() directly here');
+		});
+
+		var v = document.getElementById('btn3');
+		var output = document.getElementById('output');
+
+
+		v.addEventListener('mouseover', mouseOver);
+		v.addEventListener('click', click);
+		v.addEventListener('mouseout', mouseOut);
+
+
+		function mouseOver(){
+			output.innerHTML = "Mouse Over";
+		}
+		function click(){
+			output.innerHTML = "Clicked";
+		}
+
+		function mouseOut(){
+			output.innerHTML = "Mouse Out";
+		}
+
+		window.addEventListener('resize', resize);
+		function resize(){
+			output.innerHTML = Math.random();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<body>
+	<script>
+		var d = new Date();
+		// Mon Sep 14 2020 08:54:11 GMT+0600 (Bangladesh Standard Time)
+		console.log(d); 
+
+		// There are 4 ways to crate a new date object
+		// new Date();
+		// new Date(year, month, day, hours, minutes, seconds, milliseconds);
+		// new Date(milliseconds);
+		// new Date(date string);
+
+        // Thu Jan 01 1970 06:00:02 GMT+0600 (Bangladesh Standard Time)
+        console.log(new Date(2018));
+
+        // Sat Oct 20 2018 00:00:00 GMT+0600 (Bangladesh Standard Time)
+        console.log(new Date(2018,0,20)); // JS count month from 0 to 11
+
+		// Mon Oct 13 2014 11:13:00 GMT+0600 (Bangladesh Standard Time)
+		console.log(new Date("October 13, 2014 11:13:00")); // Date(dateString)
+
+		// Thu Jan 01 1970 06:00:00 GMT+0600 (Bangladesh Standard Time)
+		console.log(new Date(0)); // Date(milliseconds) 1970
+
+		// Fri Jan 02 1970 09:46:40 GMT+0600 (Bangladesh Standard Time)
+		console.log(new Date(100000000)); // 1970 + 100000000
+
+		// # Date Mothods 
+
+		// Mon Sep 14 2020 09:06:35 GMT+0600 (Bangladesh Standard Time)
+		console.log(d.toString());
+
+		// Mon, 14 Sep 2020 03:07:27 GMT
+		console.log(d.toUTCString());
+
+		// Mon Sep 14 2020
+		console.log(d.toDateString());
+
+		// 2020-09-14T03:09:59.371Z
+		console.log(d.toISOString());
+
+	</script>
+</body>
+</html>

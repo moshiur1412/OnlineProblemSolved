@@ -1,0 +1,67 @@
+<html>
+<body>
+	<script>
+		var str = "Visit W3Schools";
+		var patt1 = /w3schools/i; // i -> Perform case-insensitive matching
+		var result = str.match(patt1);
+
+		// ["W3Schools", index: 6, input: "Visit W3Schools", groups: undefined]
+		console.log(result);
+
+		var patt2 = /w3schools/g; // g -> Perform a global match (find all matches rather than stopping after the first match)
+		// null
+		console.log(str.match(patt2));
+
+		var patt3 = /w3schools/m; // m -> Perform multiline matching
+		// null
+		console.log(str.match(patt3));
+
+		var patt4 = /[o]/g; // find any of the characters between the brackets [abc]
+		// (2) ["o", "o"]
+		console.log(str.match(patt4));
+
+		var patt5 = /[0-3]/g; // find any of the digits between the brackets [0-9]
+		//["3"]
+		console.log(str.match(patt5));
+
+		// ["Visit"]
+		var patt6 = /(visit|Visit)/g; // find any of the alternatives separted with (x|y)
+		console.log(str.match(patt6));
+
+		
+		var patt7 = /\d/g; // global serach digit \d
+		// ["3"]
+		console.log(str.match(patt7));
+
+		var patt8 = /\s/g; // global search whitespace \s
+		// [" "]
+		console.log(str.match(patt8));
+
+		var patt9 = /\bW3/g; // global serach first character \b
+		// ["W3"]
+		console.log(str.match(patt9));
+
+		var patt10 = /ls\b/g; // global serach last char \b
+		// ["ls"]
+		console.log(str.match(patt10));
+
+		var patt11 = /\u0057/g; // search hexadecimal 0057 (W);
+		// ["W"]
+		console.log(str.match(patt11));
+
+		var patt12 = /o+/g; // search for at least one "o"
+		// ["oo"]
+		console.log(str.match(patt12));
+
+		var patt13 = /lo*/g; // seach l & 0 * all
+		// ["l"] 
+		console.log(str.match(patt13));
+
+		var patt14 = /30?/g; // seach 3 and 0 and more..
+		// ["3"]
+		console.log(str.match(patt14));
+
+
+	</script>
+</body>
+</html>
