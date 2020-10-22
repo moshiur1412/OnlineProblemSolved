@@ -1,4 +1,4 @@
-## online Problem Solved
+## Online Problem Solved
 
 ### Hacker Rank Problem Solved
 
