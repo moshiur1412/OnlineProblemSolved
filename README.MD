@@ -1,9 +1,11 @@
-## online Problem Solutions
+## online Problem Solved
 
-### Hacker Rank Problem solved
+### Hacker Rank Problem Solved
 
-### PHP Basic Tutorial Solutions
+### PHP Basic Tutorial Solved
 
-### MySQL Basic Solutions
+### MySQL Basic Solved
 
 ### JavaScript Basic Tutorials 
+
+### Sample Problem Solved
