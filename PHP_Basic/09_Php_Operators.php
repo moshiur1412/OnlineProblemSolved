@@ -17,4 +17,28 @@
 
 
 
+# Arithmetic Operation
+function sum($a, $b){
+	return $a+$b;
+}
+
+// echo sum(10,12);
+
+# Assignment Operation
+function ass($a = null){
+	return $a;
+}
+
+// echo ass(20);
+
+# Bitwish Operation
+function bit(&$b){
+	 $b = 10;
+}
+$b= 22;
+bit($b);
+echo $b; // 10
+
+
+
 ?>
