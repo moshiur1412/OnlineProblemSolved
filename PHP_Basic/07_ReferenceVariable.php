@@ -23,7 +23,7 @@ function goodbye(&$greeting){
 
 $myValue = "Hi there";
 goodbye($myValue);
-// echo $myValue;
+// echo $myValue; // Allah Hafez;
 
 
 
