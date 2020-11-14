@@ -41,4 +41,18 @@ echo $b; // 10
 
 
 
+# Operator Precedence depend on 9 categories
+// 1. Unary 			! ++ -- 			Right to Left
+// 2. Multiplicative 	* / % 				Left to right
+// 3. Additive 			+ -					Left to right
+// 4. Relational 		< <= > >=			Left to right
+// 5. Equality			= = !=				Left to right 
+// 6. Logical And 		&& 					Left to right
+// 7. Logical OR 		||					Left to right 
+// 8. Conditional 		?:					Right to Left
+// 9. Assignment		= += -= *= /= %= 	Right to Left
+
+
+
+
 ?>
