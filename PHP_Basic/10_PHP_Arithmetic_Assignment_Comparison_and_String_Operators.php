@@ -9,7 +9,33 @@
 	echo "<br>";
 	echo 8%5; // 3
 	echo "<br>";
-	echo 8**5; // 32768
+	echo 8**5; // 32,768
 	echo "<br>";
+
+	echo "<hr>";
+
+	$c = 8+5; // 13
+	echo $c, "<br>";
+	$c += 5; // 18
+	echo $c, "<br>";
+	$c -= 5; // 13
+	echo $c, "<br>";
+	$c *=5;	// 65
+	echo $c, "<br>";
+	$c /=5;	// 13
+	echo $c, "<br>";
+	$c %=5; // 3
+	echo $c, "<br>";
+	$c **=5; // 243
+	echo $c, "<br>";
+
+	echo "<hr>";
+
+
+	echo 8 == 5; 	//1
+	echo 8 != 5; 	//
+	echo 8 === "5" 	//
+
+
 
 ?>
