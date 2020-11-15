@@ -32,9 +32,28 @@
 	echo "<hr>";
 
 
-	echo 8 == 5; 	//1
-	echo 8 != 5; 	//
-	echo 8 === "5" 	//
+	echo 8 == 5; 	// empty
+	echo "<br>";
+	echo 8 != 5; 	// 1
+	echo "<br>";
+	echo 8 === "5";	// empty
+	echo "<br>";
+	echo 8 !== "5"; // 1
+	echo "<br>";
+	echo 8 < 5; 	// 
+	echo "<br>";
+	echo 8 > 5;		// 1
+	echo "<br>";
+	echo 8 <= 5; 	// 
+	echo "<br>";
+	echo 8 >= 5; 	// 1
+	echo "<br>";
+	echo 8 <> 5;	// 1
+	echo "<br>";
+	echo 8 <=> 5;	// 1
+	echo "<br>";
+
+	echo "<hr>";
 
 
 
