@@ -56,5 +56,17 @@
 	echo "<hr>";
 
 
+	echo "Hello " . "world!";
+	echo "<br>";
+	print "Hello ". "world!";
+
+	echo "<br>";
+
+	$a="Hello ";
+	$a.="world!";
+
+	echo $a;
+
+
 
 ?>
