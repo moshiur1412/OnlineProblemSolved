@@ -23,4 +23,12 @@ echo "<br>";
 echo $age>0 XOR $age <30; // empty
 
 
+# PHP Error Control
+@include("m.php"); // No error for @
+
+$c = "Canada";
+
+echo @$canada; // no error for @
+
+
 ?>
