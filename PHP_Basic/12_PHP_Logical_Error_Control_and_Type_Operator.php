@@ -31,4 +31,28 @@ $c = "Canada";
 echo @$canada; // no error for @
 
 
+# Type Operators
+
+
+class myClass implements myInterface{
+
+}
+class myClass2 extends myClass{
+
+}
+
+$obj = new myclass; // Main Class
+
+$obj = new myclass2; // Extended class
+
+
+var_dump($obj instanceof myclass); // true
+
+
+interface myInterface{
+
+}
+
+
+
 ?>
