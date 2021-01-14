@@ -56,6 +56,17 @@
 	 while($i <= 10);
 
 
+	 # foreach loop -->
+	 $countries = ["a" => "America", "b" => "Bangladesh", "c" => "Canada"];
+
+	 foreach($countries as $country){
+		 echo "<hr>", $country;
+	 }
+
+	 
+
+
+
 
 	
 
