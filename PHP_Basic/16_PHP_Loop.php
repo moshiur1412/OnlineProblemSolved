@@ -57,13 +57,21 @@
 
 
 	 # foreach loop -->
-	 $countries = ["a" => "America", "b" => "Bangladesh", "c" => "Canada"];
+	 $countries = ["a" => "Arab", "b" => "Bangladesh", "c" => "Canada"];
 
-	 foreach($countries as $country){
-		 echo "<hr>", $country;
+	//  foreach($countries as $key => $country){
+	// 	 echo "<hr>", $key , " => ", $country;
+	//  }
+
+	 # Reference 
+	 foreach($countries as &$country){
+		 $country = strtoupper($country);
 	 }
+	 echo "<hr>";
+	 print_r($countries);
 
-	 
+
+
 
 
 
