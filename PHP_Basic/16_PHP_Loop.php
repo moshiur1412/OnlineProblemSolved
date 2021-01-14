@@ -63,12 +63,25 @@
 	// 	 echo "<hr>", $key , " => ", $country;
 	//  }
 
-	 # Reference 
+	 # Reference Value -->
 	 foreach($countries as &$country){
 		 $country = strtoupper($country);
 	 }
 	 echo "<hr>";
 	 print_r($countries);
+
+
+	 # Object Oriented Referenced
+	  class myClass{
+		 public $a = "Arablic";
+		 private $b = "Bangladesh";
+		 public $c = "Canada";
+	 }
+
+	 foreach(new myClass as &$property){
+		 echo $property;
+	 }
+
 
 
 
