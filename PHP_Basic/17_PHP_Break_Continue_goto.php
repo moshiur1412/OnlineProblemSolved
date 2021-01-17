@@ -19,8 +19,39 @@
     }
 
     canada:
-    echo "Welcome to Canada";
+    echo "Welcome to Canada", "<br>";
     
+
+    # Another popular example;
+    # date: format a local time/date
+    # N for numeric represation of the day of the week
+    $day = date('N');
+    
+    echo "<hr>", $day, "<hr>";
+
+    switch($day){
+        case 1:
+            echo "This is the first day (1 for Monday)";
+            break;
+        case 2:
+            echo "This is the second day (2 for Tuesday)";
+            break;
+        case 3:
+            echo "This is the third day( 3 for Wednesday)";
+            break;
+        case 4:
+            echo "This is the fourth day (4 for Thursday";
+            break;
+        case 5:
+            echo "This is the fifth day (5 for Friday)";
+            break;
+        case 6:
+            echo "This is the sixth day (6 for Saturday)";
+            break;
+        default:
+            echo "This is the default day (7 for Sunday)";
+            break;
+    }
 
 
 ?>
