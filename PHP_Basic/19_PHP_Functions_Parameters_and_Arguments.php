@@ -14,8 +14,7 @@ function basicFunction(){
 }
 basicFunction();
 
-# Function arguments
-
+# Function arguments way 1
 function argumentsFunction(...$params){
     
     # Return an item from the argument list;
@@ -34,5 +33,13 @@ function argumentsFunction(...$params){
     echo "<hr>";
 }
 argumentsFunction(1,2,3,4);
+
+# function arguments way 2
+function argumentsFunction2($params1, $params2){
+    print_r(func_get_args());
+}
+$numbers = [1,2,3,4];
+argumentsFunction2(...$numbers);
+
 
 
