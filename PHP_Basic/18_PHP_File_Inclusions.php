@@ -1,9 +1,9 @@
 <?php
- # Four Types of php file inclusion
- # 1. include
- # 2. include_once
- # 3. require
- # 4. require_once
+     # Four Types of php file inclusion
+     # 1. include
+     # 2. include_once
+     # 3. require
+     # 4. require_once
 
  include('16_PHP_Loop.php');
  include_once('16_PHP_Loop.php');

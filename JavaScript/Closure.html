@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+function test(){
+    console.log('test');
+
+    var outer = "This is the outer";
+    function inner(){
+        var variable = "I am outer";
+        console.log(outer)
+    }
+
+    return inner;
+}
+var closure = test();
+closure();
+
+
+function getCapital(capital){
+    return function(interest){
+        return (capital*interest)/100;
+    }
+}
+
+const buniness1 = getCapital(100000);
+
+console.log(buniness1(12));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

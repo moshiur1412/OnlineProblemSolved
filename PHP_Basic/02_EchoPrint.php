@@ -30,9 +30,9 @@ echo print 5; // output-> 51
 
 # echo তে আপনি একাদিক parameter নিতে পারবেন, যদি parenthesis ব্যবহার না করেন। অন্যদিকে print এ আপনি শুধু একটি parameter নিতে পারবেন, হোক সেটা parenthesis সহ অথবা parenthesis ছাড়া। নিচের উদাহরণ গুলো লক্ষ্য করুন :
 
-// echo "1"; 			// valid
-// print "1";			// valid
-// echo "1", "2";		// valid
+// echo "1"; 			// valid    1
+// print "1";			// valid    1
+// echo "1", "2";		// valid    12
 // print "1","2";		// invalid
 // echo ("1", "2"); 	// invalid
 
@@ -41,24 +41,24 @@ echo print 5; // output-> 51
 // echo print 5; // 51 -> 5 for echo print true =1 
 
 
-Language Construct:
-1. Language constructs are keywords of the language. 
-2. They are parts of language it self. 
-3. They can't defined by user.
-4. They may or may not take arguments
-5. They may or may not have return values
+// Language Construct:
+// 1. Language constructs are keywords of the language. 
+// 2. They are parts of language it self. 
+// 3. They can't defined by user.
+// 4. They may or may not take arguments
+// 5. They may or may not have return values
 
-PHP language construct Ex-
-1. require()
-2. empty()
-3. isset()
-4. unset()
-5. echo()
-6. print()
-7. die()
-8. include()
-9. list
-10. array()
+// PHP language construct Ex-
+// 1. require()
+// 2. empty()
+// 3. isset()
+// 4. unset()
+// 5. echo()
+// 6. print()
+// 7. die()
+// 8. include()
+// 9. list
+// 10. array()
 
 
 

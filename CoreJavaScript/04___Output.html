@@ -14,7 +14,18 @@
 	</pre>
 	
 
-	<p id="demo"></p>
+	<h2> JavaScript Display/Output </h2>
+	<button onclick="document.write(5*5);"> DocumentWrite()</button>
+	<button onclick="window.alert('windowAlert');"> WindowAlert </button>
+	<button onclick="alert('alert')"> Alert </button>
+	<button onclick="<script> console.log(5 + 6);</script>"> Console.log </button>
+	<button onclick="Window.print();"> Window.print() </button>
+	<button onclick="console.dir('console.dir')"> Console.dir </button>
+	<button onclick="document.getElementByid('demo').innerHTML='Deemo'"/> InnerHTML </button>
+
+
+	<p id="demo"> </p>
+
 
 	<script>
 		document.getElementById('demo').innerHTML = 5+9;
@@ -29,7 +40,6 @@
 	<script>
 		window.alert(6*6);
 		console.log(5+5);
-
 	</script>
 
 	<p> This is the third paragraph </p>
