@@ -9,8 +9,205 @@
         // at(): this method returns the elements of an array in place and returns the sorted array. 
         // It can takes one argument: the index
         const arr = ['apple', 'banana', 'cherry'];
-        console.log(arr);
+        let arr2 = [1,2,3,4,5,6,7,8,9,10,11];
+        // console.log(arr);
+        // document.write(arr);
+        // console.dir(arr);
+        // console.log(arr.at(2));
+        // console.log(arr.concat(2,3,4));
+        // console.log(arr.constructor(4));
+        // console.log(arr.copyWithin(1,0));
+        // console.log(arr2);
+        // copyWithin() method shallow capies part of an array to another location in the same array 
+        // and returns the modified array without modifying its length.Syntax.copyWithin(target,start,end)
+        // console.log(arr2.copyWithin(5,1,11)); // index, start value+1, end number
+        
+        // entries(): This method returns a new Array Iterator object
+        // that contains the key/value pairs for each index in the array.
+        // console.log(arr.entries().next().value);
 
+
+        // every(): This method checks if all elements in an array pass a test
+        // (provided as a function). It returns true if all elements pass the test;
+        // otherwise, it return false.
+        // const arr3 = [2,4,6,8];
+        // const isEven = (num) => num % 2 === 0;
+        // const result = arr3.every(isEven);
+        // console.log(result);
+        // console.log(arr2.every(isEven));
+
+
+        // fill(): This method fills all the elements of an array from a start index
+        // will a static value. it can take up to three arguments
+        // the value to fill with, the start index, and the end index
+
+        // console.log(arr2.fill(0,1,5));
+
+
+        // filter(): This method creates a new array with all elements 
+        // that pass the test implmented by the provided function. 
+        // console.log(arr2.filter(num => { return num > 2}));
+
+
+        // find(): This method returns the value of the first element
+        // in an array that passes a test(provided as a function).
+        // if no element passes the test, it returns undefined
+        // console.log(arr2.find(num => { return num > 2 }));
+
+
+        // findIndex(): This method return indexx of the first element 
+        // in an array that passes a test(provided as a function)
+        // If no element passes the test, it returns -1. 
+        // console.log(arr2.findIndex(num => {return num > 2 }));
+
+        // console.log(arr2.findLast(num => {return num > 2})); // 11
+        // console.log(arr2.findLastIndex(num => {return num >2 })); // 10 
+        
+        
+        // flat(): This method creates a new array with all sub-array
+        // elements concatenated into it recursively up to the specified depth.
+        const numbers = [1,[2,[3]],4];
+        // console.log(numbers.flat(Infinity)); // (4) [1, 2, 3, 4]
+        // console.log(numbers); // (3) [1, Array(2), 4]
+
+        // flatMap(): This method maps each element using a mapping function, 
+        // then flatterns the result into a new array.
+        // console.log(arr2.flatMap(x => x*2 )); // (11) [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+
+        // forEach(): method executes a provided function once for each array element.
+        // It doesn't return anything, it just executes the callback function 
+        // on each element of the array.
+        // console.log(arr2.forEach(m =>  m)); // undefined
+        // arr2.forEach(function (item) {return console.log(item)}); // 1 2 3 4 5 6 7 8
+
+        // includes(): This method determines whether an array
+        // // includes a ceertain value among its entries, returning true or false as appropriate.
+        // console.log(arr2.includes(99)); // falsea
+        // console.log(arr2.includes(5)); // true
+
+        // indexOf(): This method returns the index of the first occurrence of a specified element
+        // in an array. If the element is not presentl, it returns
+        // console.log(arr2.indexOf()); // -1 
+        // console.log(arr2.indexOf(5)); // 4
+
+        // join(): This method joins all the elements of an array into a string
+        // using a specified separator. It takes one optional argument:
+        // the separator to use.
+        // console.log(arr2.join()); // 1,2,3,4,5,6,7,8,9,10,11
+        // console.log(arr2.join(99)); // 199299399499599699799899999109911
+
+        
+        // kyes(): This method returns an array containing the keys of the given object.
+        // console.log(arr2.keys()); // Array Iterator {}
+        // console.log(Object.keys(arr2)); // (11) ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+
+
+        // LastIndexOf(): This method returns the last index at which a given element 
+        // can be found in the array
+        // console.log(arr2.lastIndexOf()); // -1 
+        // let l_index = [1,2,3,4,5,3]
+        // console.log(l_index.lastIndexOf(3)); // 5
+
+
+        // map(): The method creates a new array with the results of calling 
+        // a provided function on every elements in the calling array
+        // console.log(arr2.map(m=>m )); // (11) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        // console.log(arr2.map(m=>m*2 )); // (11) [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22]
+
+
+        // pop(): This method removes the last element from an array and returns that element.
+        // console.log(arr2.pop()); // 11
+        // console.log(arr2); // (10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        // push(): method adds one or more elements to the end of an array and 
+        // return the new length of the array
+        // console.log(arr2.push()); // 11
+        // console.log(arr2.push(33,45)); // 13
+        // console.log(arr2);  // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 33, 45]
+
+        // reduce(): This method applies a function to each element of an array and 
+        // reduces the array to a single value.
+        // console.log(arr2.reduce((accumulator, currentValue) => accumulator+currentValue )); //66
+        // const numbers3 = [10,20,30,40];
+
+        // const sum = numbers3.reduce((previousValue,currentValue) =>{ return previousValue+ currentValue });
+        // console.log(sum); // 100
+
+
+        // reduceRight(): This method is similar to the reduce() method. 
+        // However, it iterates over the array elements from right to left instead of from left to right.
+        // console.log(arr2.reduceRight( (previousValue, currentValue) => previousValue+currentValue)); // 66
+        // const numbers4 = [10,20,30,40];
+        // console.log(numbers4.reduceRight( (previousValue, currentValue) => previousValue+currentValue)); // 100
+
+        
+        // reverse(): This method reverses the order of the elements in the array.
+        // console.log(arr2.reverse()); // (11) [11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+        // shift(): method removes the first element from an array and return that removed element.
+        // This method changes the length of the array. 
+        // console.log(arr2.shift()); // 1
+        // console.log(arr2); // (10) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+
+        // slice(): This method returns a shallow copy of a portion of an array into a new array object
+        // selected from begin to end (end not included)
+        // console.log(arr2.slice()); // (11) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        // console.log(arr2.slice(2,4)); // (2) [3, 4]
+
+
+        // console.log(arr2.some((value,index) => value)); // true
+
+        // sort(): This method sorts the elements of an array in place and returns the sorted array.
+        // It can take an optional compare function as an argument.
+        // console.log(arr2.sort()); // (11) [1, 10, 11, 2, 3, 4, 5, 6, 7, 8, 9]
+        // console.log(arr2.sort((a,b)=>a-b)); // (11) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+
+        // splice() method changes the contents of an array by removing or replacing existing
+        // elements and/or adding new elements in place.
+        // console.log(arr2.splice(2,1,'mabru', 'mbarura')); // [3]
+        // console.log(arr2); // (12) [1, 2, 'mabru', 'mbarura', 4, 5, 6, 7, 8, 9, 10, 11]
+        
+        // console.log(arr2.toLocaleString()); // 1,2,3,4,5,6,7,8,9,10,11
+
+        // console.log(arr2.toReversed()); // (12) [11, 10, 9, 8, 7, 6, 5, 4, 'mbarura', 'mabru', 2, 1]
+
+        // console.log(arr2.toSorted()); // (12) [1, 10, 11, 2, 4, 5, 6, 7, 8, 9, 'mabru', 'mbarura']
+
+        // console.log(arr2.toSpliced());  // (12) [1, 2, 'mabru', 'mbarura', 4, 5, 6, 7, 8, 9, 10, 11]
+
+        // // toString: This method returns a string representing the array and its elements. 
+        // console.log(arr2.toString()); // 1,2,mabru,mbarura,4,5,6,7,8,9,10,11
+
+        // // unshift(): method adds one or more elements the begining of an array and returns the length of the array.
+        // console.log(arr2.unshift()); // 12
+        // console.log(arr2.unshift(0,1,4)); // 15
+        // console.log(arr2); // (15) [0, 1, 4, 1, 2, 'mabru', 'mbarura', 4, 5, 6, 7, 8, 9, 10, 11]
+
+
+
+        // value(): This method returns an iterator that provides the values
+        // for each index in the array. It takes no arguments 
+        // console.log(arr2.values()); // Array Iterator {}
+
+        const iterator = arr2.values();
+        for(const value of iterator){
+            console.log(value);
+        }
+
+        console.log(arr2.with()); // (11) [undefined, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+
+
+
+
+
+
+
+
+
+    
     </script>
 </head>
 <body>
