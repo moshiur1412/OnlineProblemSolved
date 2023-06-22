@@ -1,0 +1,1777 @@
+swagger: '2.0'
+info:
+  version: '2017-10-23T18:00:00Z'
+  title: dev-E-Learning
+  description: EC2 WebAPI
+host: FQDN
+basePath: /
+schemes:
+  - https
+paths:
+  /auth/login:
+    post:
+      description: |
+        login
+        - login with email address and password
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              email:
+                title: 'Email address:required=true'
+                type: string
+              password:
+                title: 'password:required=true'
+                type: string
+            example:
+              email: test01@gmail.com
+              password: testpass
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                type: object
+                properties:
+                  remember_token:
+                    title: remember token
+                    type: string
+                  user_info:
+                    title: user account info
+                    type: object
+                    properties:
+                      hash:
+                        title: hash
+                        type: string
+                      first_name:
+                        title: first name
+                        type: string
+                      first_name_kana:
+                        title: first name kana
+                        type: string
+                      last_name:
+                        title: last name
+                        type: string
+                      last_name_kana:
+                        title: last name kana
+                        type: string
+                      email:
+                        title: email address
+                        type: string
+                      password:
+                        title: password
+                        type: string
+                      zip_code:
+                        title: zip code
+                        type: string
+                      address:
+                        title: address
+                        type: string
+                      birthday:
+                        title: birthday
+                        type: string
+                      gender:
+                        title: gender
+                        type: string
+                      tel:
+                        title: telephone number
+                        type: string
+                      occupation:
+                        title: occupation
+                        type: string
+                      is_subscribing:
+                        title: is subscribing
+                        type: string
+                      last_login_at:
+                        title: last_login_at
+                        type: string
+                      last_logout_at:
+                        title: last logout at
+                        type: string
+                      created_at:
+                        title: created at
+                        type: string
+                      updated_at:
+                        title: updated at
+                        type: string
+          examples:
+            application/json:
+              result: true
+              data:
+                remember_token: 0sx433vxhfae23
+                user_info:
+                  hash: 0sx433vxhfae23
+                  first_name: 'kiyoshi'
+                  first_name_kana: 'kiyoshi'
+                  last_name: 'hirao'
+                  last_name_kana: 'hirao'
+                  email: 'test@gmail.com'
+                  password: ''
+                  zip_code: ''
+                  address: ''
+                  birthday: '19930711'
+                  gender: 0
+                  tel: '081251313526'
+                  occupation: null
+                  is_subscribing: 1
+                  last_login_at: '2017-10-20 09:18:34'
+                  last_logout_at: '2017-10-20 09:18:34'
+                  created_at: '2017-10-20 09:18:34'
+                  updated_at: null
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            email||password not valid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Email or Password incorrect."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            Server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /auth/logout:
+    post:
+      description: |
+        logout
+        - disconnect session
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+            example:
+              hash: 0sx433vxhfae23
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /notification:
+    post:
+      description: |
+        notification
+        - get notification details related to a user
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+            example:
+              hash: 0sx433vxhfae23
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: notification
+                type: array
+                items:
+                  type: object
+                  properties:
+                    notification_id:
+                      title: notification id
+                      type: integer
+                    content:
+                      title: content
+                      type: string
+                    created_at:
+                      title: created_at
+                      type: string
+          examples:
+            application/json:
+              result: true
+              data:
+                notification:
+                  - notification_id: 10
+                    content: 'system maintanance tomorrow'
+                    created_at: '2017-09-21 16:00:00'
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /read:
+    post:
+      description: |
+        read
+        - called when notification has been read
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+              notification_id:
+                title: 'notification_id:required=true'
+                type: array
+                items:
+                  title: notification id
+                  type: integer
+            example:
+              hash: 0sx433vxhfae23
+              notification_id:
+                - 10
+                - 11
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /user:
+    put:
+      description: |
+        register
+        - add a new user
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              first_name:
+                title: first name
+                type: string
+              first_name_kana:
+                title: first name kana
+                type: string
+              last_name:
+                title: last name
+                type: string
+              last_name_kana:
+                title: last name kana
+                type: string
+              email:
+                title: email address
+                type: string
+              password:
+                title: password
+                type: string
+              zip_code:
+                title: zip code
+                type: string
+              address:
+                title: address
+                type: string
+              birthday:
+                title: birthday
+                type: string
+              gender:
+                title: gender
+                type: string
+              tel:
+                title: telephone number
+                type: string
+              occupation:
+                title: occupation
+                type: string
+            example:
+              first_name: 'kiyoshi'
+              first_name_kana: 'kiyoshi'
+              last_name: 'hirao'
+              last_name_kana: 'hirao'
+              email: 'test@gmail.com'
+              password: 'password'
+              zip_code: '136-13613'
+              address: 'test address'
+              birthday: '19930711'
+              gender: 1
+              tel: '081251313526'
+              occupation: null
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  / user:
+    post:
+      description: |
+        register
+        - update an existing user
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+              first_name:
+                title: first name
+                type: string
+              first_name_kana:
+                title: first name kana
+                type: string
+              last_name:
+                title: last name
+                type: string
+              last_name_kana:
+                title: last name kana
+                type: string
+              email:
+                title: email address
+                type: string
+              password:
+                title: password
+                type: string
+              zip_code:
+                title: zip code
+                type: string
+              address:
+                title: address
+                type: string
+              birthday:
+                title: birthday
+                type: string
+              gender:
+                title: gender
+                type: string
+              tel:
+                title: telephone number
+                type: string
+              occupation:
+                title: occupation
+                type: string
+            example:
+              hash: 0sx433vxhfae23
+              first_name: 'kiyoshi'
+              first_name_kana: 'kiyoshi'
+              last_name: 'hirao'
+              last_name_kana: 'hirao'
+              email: 'test@gmail.com'
+              password: 'password'
+              zip_code: '136-13613'
+              address: 'test address'
+              birthday: '19930711'
+              gender: 1
+              tel: '081251313526'
+              occupation: null
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /resetpassword:
+    post:
+      description: |
+        reset password
+        - reset password
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              email:
+                title: 'email:required=true'
+                type: string
+            example:
+              email: test@gmail.com
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '404':
+          description: |
+            email invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "email does not exist."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /subscribe:
+    post:
+      description: |
+        subscribe
+        - start subscription
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+            example:
+              hash: 0sx433vxhfae23
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /unsubscribe:
+    post:
+      description: |
+        subscribe
+        - start subscription
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+            example:
+              hash: 0sx433vxhfae23
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+            no access:code=4003
+            {
+              result: false,
+              error: {
+                code: 4003,
+                message: "user access not allowed"
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /creditcard:
+    put:
+      description: |
+        creditcard
+        - add a new credit card
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+              name:
+                title: name
+              number:
+                title: card number
+                type: string
+              expiration_date:
+                title: expiration_date
+                type: string
+              CVS:
+                title: CVS
+                type: string
+              address:
+                title: address
+                type: string
+            example:
+              hash: 0sx433vxhfae23
+              name: 'kiyoshi hirao'
+              number: '2345678'
+              expiration_date: '19930711'
+              CVS: 136
+              address: ''
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+            no access:code=4003
+            {
+              result: false,
+              error: {
+                code: 4003,
+                message: "user access not allowed"
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  / creditcard:
+    delete:
+      description: |
+        creditcard
+        - add a new credit card
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+              card_id:
+                title: 'card_id:required=true'
+                type: array
+                items:
+                  title: card id
+                  type: integer
+            example:
+              hash: 0sx433vxhfae23
+              card_id:
+                - 10
+                - 11
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+            no access:code=4003
+            {
+              result: false,
+              error: {
+                code: 4003,
+                message: "user access not allowed"
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /textbook:
+    post:
+      description: |
+        textbook
+        - get list of textbooks
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+            example:
+              hash: 0sx433vxhfae23
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: list
+                type: array
+                items:
+                  type: object
+                  properties:
+                    package_id:
+                      title: package id
+                      type: integer
+                    textbook_id:
+                      title: textbook id
+                      type: integer
+                    content:
+                      title: content
+                      type: string
+                    description:
+                      title: description
+                      type: string
+                    has_access:
+                      title: has_access
+                      type: integer
+                    is_favourite:
+                      title: is_favourite
+                      type: integer
+                    created_at:
+                      title: created_at
+                      type: string
+                    tags:
+                      title: tags
+                      type: array
+                      items:
+                        type: string
+          examples:
+            application/json:
+              result: true
+              data:
+                list:
+                  - package_id: 10
+                    package_content: '{"package": 1}'
+                    package_description: 'package 1'
+                    release_date: '2018-04-16 15:40:45'
+                    textbook_id: 10
+                    textbook_content: '{"test": 1}'
+                    textbook_description: 'first text'
+                    has_access: 1
+                    is_favorite: 0
+                    created_at: '2017-09-21 16:00:00'
+                    label:
+                      - 'new'
+                      - 'difficult'
+                    chapter:
+                      - chapter_id: 1
+                        chapter_content: '{"chapter": 1}'
+                        chapter_description: 'first chapter'
+                        quiz_id: 1
+                        chapter_detail:
+                            - detail_id: 1
+                              detail_type: 1
+                            - detail_id: 2
+                              detail_type: 2
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+            no access:code=4003
+            {
+              result: false,
+              error: {
+                code: 4003,
+                message: "user access not allowed"
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            Server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /detail:
+    post:
+      description: |
+        detail
+        - get list of detail belongs to the chapter
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+              chapter_id:
+                title: 'chapter_id:required=true'
+                type: string
+            example:
+              hash: 0sx433vxhfae23
+              chapter_id: 10
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: list
+                type: array
+                items:
+                  type: object
+                  properties:
+                    detail_id:
+                      title: detail id
+                      type: integer
+                    chapter_id:
+                      title: chapter id
+                      type: integer
+                    content:
+                      title: content
+                      type: string
+                    description:
+                      title: description
+                      type: string
+                    created_at:
+                      title: created_at
+                      type: string
+          examples:
+            application/json:
+              result: true
+              data:
+                list:
+                  - chapter_id: 10
+                    detail_id: 10
+                    content: 'wyzwyg created htmls'
+                    description: 'description'
+                    type: 2
+                    created_at: '2017-09-21 16:00:00'
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+            no access:code=4003
+            {
+              result: false,
+              error: {
+                code: 4003,
+                message: "user access not allowed"
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            Server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /quiz:
+    post:
+      description: |
+        quiz
+        - get list of quizzes
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+              chapter_id:
+                title: 'chapter_id:required=true'
+                type: string
+              quiz_id:
+                title: 'quiz_id:required=true'
+                type: string
+            example:
+              hash: 0sx433vxhfae23
+              chapter_id: 10
+              quiz_id: 1
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: list
+                type: array
+                items:
+                  type: object
+                  properties:
+                    quiz_id:
+                      title: quiz id
+                      type: integer
+                    chapter_id:
+                      title: chapter id
+                      type: integer
+                    content:
+                      title: content
+                      type: string
+                    previous_score:
+                      title: previous score
+                      type: string
+                    description:
+                      title: description
+                      type: string
+                    created_at:
+                      title: created_at
+                      type: string
+          examples:
+            application/json:
+              result: true
+              data:
+                list:
+                  - chapter_id: 10
+                    quiz_id: 10
+                    quiz_content: 'content'
+                    previous_score: '9/10'
+                    quiz_description: 'description'
+                    created_at: '2017-09-21 16:00:00'
+                    problem:
+                      - problem_id: 1
+                        problem_content: ''
+                        problem_description: ''
+                        answer_id: 1
+                        answer_content: ''
+                        answer_description: ''
+                        solution_id: 1
+                        solution_content: ''
+                        solution_description: ''
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+            no access:code=4003
+            {
+              result: false,
+              error: {
+                code: 4003,
+                message: "user access not allowed"
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            Server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /unlock:
+    post:
+      description: |
+        unlock
+        - unlock(purchase) package
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+              package_id:
+                title: 'package_id:required=true'
+                type: integer
+            example:
+              hash: 0sx433vxhfae23
+              package_id: 10
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+  /like:
+    post:
+      description: |
+        like
+        - update favourite list
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              hash:
+                title: 'hash:required=true'
+                type: string
+              textbook_id:
+                title: 'textbook_id:required=true'
+                type: array
+                items:
+                  title: update
+                  type: object
+                  properties:
+                    id:
+                      title: 'texbook id'
+                      type: integer
+                    status:
+                      title: 'status to update'
+                      type: integer
+            example:
+              hash: 0sx433vxhfae23
+              update:
+                - id: 1
+                  status: 0
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }
+   /contact:
+    post:
+      description: |
+        contact
+        - email inquiry
+      parameters:
+        - in: header
+          name: api-key
+          description: |
+            API key
+            (e.g.:e23nxs786snea33nsgghabia32)
+          type: string
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              name:
+                title: 'name:required=true'
+                type: string
+              email:
+                title: 'email:required=true'
+                type: array
+              content:
+                title: 'content:required=true'
+                type: array
+            example:
+              name: 'Kiyoshi Hirao'
+              email: 'k-hirao@mdb.co.jp'
+              content: 'test content'
+      consumes:
+        - application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: success
+          schema:
+            type: object
+            properties:
+              result:
+                title: result
+                type: string
+              data:
+                title: return
+                type: object
+          examples:
+            application/json:
+              result: true
+              data: []
+        '400':
+          description: |
+            request parameter validation error:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "The field /parameter name/ is requied and must /validation rule/."
+              }
+            }
+        '401':
+          description: |
+            hash invalid:code=4002
+            {
+              result: false,
+              error: {
+                code: 4002,
+                message: "invalid hash."
+              }
+            }
+        '403':
+          description: |
+            request header auth key invalid:code=4001
+            {
+              result: false,
+              error: {
+                code: 4001,
+                message: "Forbidden unauthed."
+              }
+            }
+        '500':
+          description: |
+            server error
+            {
+              result: false,
+              error: {
+                message: "Server Error"
+              }
+            }

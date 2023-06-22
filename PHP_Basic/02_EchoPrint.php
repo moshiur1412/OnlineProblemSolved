@@ -13,6 +13,9 @@ echo print 5; // output-> 51
 // echo 5,6.5,'<br>'; // 56.5
 // echo "Hello", "World", "<br>";
 // echo print; // No Error & No output  
+$boolean = false;
+
+echo $boolean; // nothing 
 
 # print — Output a string 
 # print ( string $arg ) : int 
